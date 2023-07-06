@@ -1,0 +1,5 @@
+Purple: #5541e9
+Pink: #FE56F9
+Cyan: #22DDFE
+Green: #1AFF79
+Orange: #FA7268

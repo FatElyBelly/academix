@@ -1,0 +1,136 @@
+.plansPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    gap: 1vh;
+}
+
+.stepsTaken {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.eachStep {
+    opacity: 0.7;
+}
+
+.progressBar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressBar .lineBox {
+    padding: 2px;
+    width: 100%;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.progressBar .lineBox .line {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #22DDFE;
+    width: 0%;
+    transition-duration: .5s;
+}
+
+.contentDiv {
+    width: 100%;
+    margin-top: 2vh;
+    background-color: none;
+    height: 60vh;
+    opacity: .9;
+    border-radius: 25px;
+}
+
+.pageSection h1 {
+    color: #5541e9;
+    font-size: 2rem;
+    transition-duration: .2s;
+}
+
+/* Section 1: Plans */
+
+.plansSection {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.planOptions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Section 3: Tutors */
+
+.tutorOptionsBox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+.tutorOptionsCarousel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.tutorOptionsRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    gap: 4vw;
+
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+}
+
+.tutorOptionsRow::-webkit-scrollbar{
+    display: none;
+}

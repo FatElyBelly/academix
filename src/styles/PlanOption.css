@@ -1,0 +1,17 @@
+.planCard {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    width: 12vw;
+    height: 42vh;
+    transition-duration: .5s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.planCard:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

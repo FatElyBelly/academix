@@ -1,0 +1,31 @@
+.contactButton {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 4rem;
+}
+
+.contactIcon {
+    color: #fff;
+    transition-duration: .2s;
+}
+
+.contactIcon:hover {
+    cursor: pointer;
+}
+
+.instagram:hover {
+    color: #FE56F9;
+}
+
+.envelope:hover {
+    color: #FA7268;
+}
+
+.whatsapp:hover {
+    color: #1AFF79;
+}
+
+.twitter:hover {
+    color: #22DDFE;
+}
