@@ -54,7 +54,7 @@ const Landing = () => {
     >
       <div className="homePage">
         <div className="leftHomePage">
-          <h1 id="welcomeTitle">Accademix</h1>
+          <h1 id="welcomeTitle">Academix</h1>
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
           <div className="homePageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
