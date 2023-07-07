@@ -7,6 +7,7 @@ import {
 
 // Pages
 import Landing from './pages/Landing.js'
+import Authentication from './pages/Authentication.js'
 import Plans from './pages/Plans.js'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route index element={<Landing/>}></Route>
           <Route path="/home" element={<Landing/>}></Route>
+          <Route path="/authentication" element={<Authentication/>}></Route>
           <Route path="/abonnements" element={<Plans/>}></Route>
         </Routes>
         

@@ -5,6 +5,19 @@
     font-size: 4rem;
 }
 
+.contactButtonCircle {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    transition: .2s;
+}
+
+.contactButtonCircle:hover {
+    cursor: pointer;
+    opacity: .75;
+}
+
 .contactIcon {
     color: #fff;
     transition-duration: .2s;
@@ -12,6 +25,11 @@
 
 .contactIcon:hover {
     cursor: pointer;
+}
+
+.contactIconCircle {
+    color: #fff;
+    font-size: 1.5rem;
 }
 
 .instagram:hover {
@@ -28,4 +46,12 @@
 
 .twitter:hover {
     color: #22DDFE;
+}
+
+.google {
+    background-color: #DB4437;
+}
+
+.facebook {
+    background-color: #4267B2;
 }

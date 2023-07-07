@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.authPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.mainContent {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25vw;
+    height: 90vh;
+    border-radius: 25px;
+}
+
+.authNav {
+    background: none;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 0%;
+}
+
+.authContent {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5vh 0;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.authContentTitle {
+    font-size: 3rem;
+    color: #5541e9;
+}
+
+.authContentInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: auto;
+    gap: 1vh;
+}
+
+.authInputWrapDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10vh;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.authInputLabel {
+    color: #646464;
+}
+
+.authInputDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    height: 5vh;
+    gap: 1vw;
+    padding: 0 1vw;
+    background-color: #fff;
+    border-bottom: 2px solid #a3a3a3;
+}
+
+.authInputIcon {
+    color: #a3a3a3;
+}
+
+.authInput {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.authInput::placeholder {
+    font-family: Roboto, sans-serif;
+    color: #646464;
+}
+
+.authInput:active {
+    border: none;
+    outline: none;
+}
+
+.forgotPassword {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    color: #a3a3a3;
+}
+
+.forgotPasswordLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.loginButtonDiv {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+.loginButton {
+    width: 70%;
+    height: auto;
+    padding: 1.5vh 0;
+    border: none;
+    border-radius: 15px;
+    font-family: Roboto, sans-serif;
+    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
+    color: #fff;
+    transition-duration: .2s;
+}
+
+.loginButton:hover {
+    width: 100%;
+    cursor: pointer;
+}
+
+.authContentOther {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+}
+
+.otherLoginMethods {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.toSignupDiv {
+    display: flex;
+    color: #a3a3a3;
+}
+
+.toSignupLink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

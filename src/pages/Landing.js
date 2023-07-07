@@ -18,7 +18,7 @@ import '../styles/ContactPage.css'
 // Components
 import TutorCard from '../components/TutorCard.js'
 import Spacer from '../components/Spacer.js'
-import ContactButton from '../components/ContactButton.js'
+import QuickButton from '../components/QuickButton.js'
 
 // Wallpapers
 import homeBackground from '../img/backgrounds/homepageBackground.png'
@@ -58,7 +58,7 @@ const Landing = () => {
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
           <div className="homePageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
-            <a href="/abonnements" target="_blank"><button className="getStarted">Get started &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
+            <a href="/authentication" target="_blank"><button className="getStarted">Get started &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
         </div>
         </div>
       </div>
@@ -235,10 +235,10 @@ quasi aliquam eligendi, placeat qui corporis!
       speed={2}
     >
       <div className="contactButtons">
-        <ContactButton icon={faInstagram} iconName="instagram" link="https://www.instagram.com/elias.helfand/"/>
-        <ContactButton icon={faEnvelope} iconName="envelope" link=""/>
-        <ContactButton icon={faWhatsapp} iconName="whatsapp" link=""/>
-        <ContactButton icon={faTwitter} iconName="twitter" link=""/>
+        <QuickButton type="simple" icon={faInstagram} iconName="instagram" link="https://www.instagram.com/elias.helfand/"/>
+        <QuickButton type="simple" icon={faEnvelope} iconName="envelope" link=""/>
+        <QuickButton type="simple" icon={faWhatsapp} iconName="whatsapp" link=""/>
+        <QuickButton type="simple" icon={faTwitter} iconName="twitter" link=""/>
       </div>
     </ParallaxLayer>
   </Parallax>
