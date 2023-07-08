@@ -2,7 +2,7 @@
 
 .authPage {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -15,7 +15,7 @@
     background-size: cover;
 }
 
-.mainContent {
+.loginContent {
     background: none;
     display: flex;
     flex-direction: column;
@@ -24,6 +24,28 @@
     width: 25vw;
     height: 90vh;
     border-radius: 25px;
+    transition-duration: .2s;
+
+    z-index: 10;
+    opacity: 1;
+    margin-right: 0;
+}
+
+.signupContent {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25vw;
+    height: 80vh;
+    border-radius: 25px;
+    transition-duration: .2s;
+
+    z-index: 5;
+    opacity: .5;
+    margin-left: -20vw;
+    pointer-events: none;
 }
 
 .authNav {
@@ -93,12 +115,25 @@
     color: #a3a3a3;
 }
 
+.showPasswordIcon {
+    color: #a3a3a3;
+}
+
+.showPasswordIcon:hover {
+    cursor: pointer;
+}
+
+#loginHidePasswordIcon, #signupHidePasswordIcon {
+    display: none;
+}
+
 .authInput {
     width: 100%;
     height: 100%;
     background: none;
     border: none;
     outline: none;
+    font-size: 1rem;
 }
 
 .authInput::placeholder {

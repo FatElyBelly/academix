@@ -1,57 +1,59 @@
-.contactButton {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 4rem;
+.contactElement {
+    width: 25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
 }
 
-.contactButtonCircle {
+.contactElementButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    background: transparent;
+    outline: none;
     border: none;
-    transition: .2s;
-}
-
-.contactButtonCircle:hover {
-    cursor: pointer;
-    opacity: .75;
-}
-
-.contactIcon {
-    color: #fff;
+    color: white;
+    overflow: hidden;
     transition-duration: .2s;
 }
 
-.contactIcon:hover {
+.contactElementButton:hover {
+    width: 100%;
+    border-radius: 25px;
     cursor: pointer;
 }
 
-.contactIconCircle {
-    color: #fff;
+
+.contactElementIcon {
+    position: relative;
+    font-size: 3rem;
+    margin-left: 1rem;
+}
+
+.contactElementText {
+    position: relative;
     font-size: 1.5rem;
+    right: 1rem;
+    white-space: nowrap;
 }
 
-.instagram:hover {
-    color: #FE56F9;
+button.instagram:hover {
+    background-color: #FE56F9;
 }
 
-.envelope:hover {
-    color: #FA7268;
+button.email:hover {
+    background-color: #FA7268;
 }
 
-.whatsapp:hover {
-    color: #1AFF79;
+button.twitter:hover {
+    background-color: #22DDFE;
 }
 
-.twitter:hover {
-    color: #22DDFE;
-}
-
-.google {
-    background-color: #DB4437;
-}
-
-.facebook {
-    background-color: #4267B2;
+button.whatsapp:hover {
+    background-color: #1AFF79;
 }

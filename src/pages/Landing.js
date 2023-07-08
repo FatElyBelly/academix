@@ -8,7 +8,6 @@ import { faPlay, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import { faInstagram, faWhatsapp, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-
 // Styles
 import '../styles/HomePage.css'
 import '../styles/TrailerPage.css'
@@ -18,7 +17,7 @@ import '../styles/ContactPage.css'
 // Components
 import TutorCard from '../components/TutorCard.js'
 import Spacer from '../components/Spacer.js'
-import QuickButton from '../components/QuickButton.js'
+import ContactButton from '../components/ContactButton.js'
 
 // Wallpapers
 import homeBackground from '../img/backgrounds/homepageBackground.png'
@@ -33,6 +32,7 @@ import contactPageTransition from '../img/transitions/contactPageTransition.svg'
 
 const Landing = () => {
     const ref = useRef()
+    
     return <Parallax pages={4} ref={ref}>
 
     <ParallaxLayer
@@ -235,10 +235,10 @@ quasi aliquam eligendi, placeat qui corporis!
       speed={2}
     >
       <div className="contactButtons">
-        <QuickButton type="simple" icon={faInstagram} iconName="instagram" link="https://www.instagram.com/elias.helfand/"/>
-        <QuickButton type="simple" icon={faEnvelope} iconName="envelope" link=""/>
-        <QuickButton type="simple" icon={faWhatsapp} iconName="whatsapp" link=""/>
-        <QuickButton type="simple" icon={faTwitter} iconName="twitter" link=""/>
+        <ContactButton name="instagram" text="Instagram" icon={faInstagram} link="https://www.instagram.com/elias.helfand/"/>
+        <ContactButton name="email" text="Email" icon={faEnvelope} link=""/>
+        <ContactButton name="twitter" text="Twitter" icon={faTwitter} link=""/>
+        <ContactButton name="whatsapp" text="WhatsApp" icon={faWhatsapp} link=""/>
       </div>
     </ParallaxLayer>
   </Parallax>
