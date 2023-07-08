@@ -1,3 +1,11 @@
+import React, {useState} from 'react';
+import { NavLink, useNavigate } from 'react-router-dom'
+
+// Auth
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+
+import { auth } from '../firebase';
+
 // Import styles
 import '../styles/Authentication.css'
 
@@ -10,6 +18,50 @@ import { faEnvelope, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-s
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 const Authentication = () => {
+    const navigate = useNavigate();
+
+    // Login functions
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+       
+    const onLogin = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            navigate("/")
+            console.log(user);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+    }
+
+    // Signup functions
+    const [signEmail, signSetEmail] = useState('')
+    const [signPassword, signSetPassword] = useState('');
+ 
+    const onSignup = async (b) => {
+      b.preventDefault()
+     
+      await createUserWithEmailAndPassword(auth, signEmail, signPassword)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/login")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
+    }
 
     let currentPageLogin = true
 
@@ -88,6 +140,7 @@ const Authentication = () => {
                                 label="Email address"
                                 placeholder="Entrer l'addresse mail"
                                 className="authInput"
+                                onChange={(e)=>setEmail(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -102,6 +155,7 @@ const Authentication = () => {
                                 placeholder="Entrer le mot de passe"
                                 className="authInput"
                                 id="loginPasswordInput"
+                                onChange={(e)=>setPassword(e.target.value)}
                                 />
                             <FontAwesomeIcon id="loginShowPasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEye}/>
                             <FontAwesomeIcon id="loginHidePasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEyeSlash}/>
@@ -113,7 +167,7 @@ const Authentication = () => {
                         </div>
 
                         <div className="loginButtonDiv">
-                            <button className="loginButton" type="submit">SE CONNECTER</button>
+                            <button className="loginButton" onClick={onLogin}>SE CONNECTER</button>
                         </div>
                         
                     </form>
@@ -151,6 +205,8 @@ const Authentication = () => {
                                 label="Email address"
                                 placeholder="Entrer l'addresse mail"
                                 className="authInput"
+                                required
+                                onChange={(b) => signSetEmail(b.target.value)}
                                 />
                             </div>
                         </div>
@@ -165,6 +221,8 @@ const Authentication = () => {
                                 placeholder="Entrer le mot de passe"
                                 className="authInput"
                                 id="signupPasswordInput"
+                                required
+                                onChange={(b) => signSetPassword(b.target.value)}
                                 />
                             <FontAwesomeIcon id="signupShowPasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEye}/>
                             <FontAwesomeIcon id="signupHidePasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEyeSlash}/>
@@ -188,7 +246,7 @@ const Authentication = () => {
                         </div>
 
                         <div className="loginButtonDiv">
-                            <button className="loginButton" type="submit">CRÉER MON COMPTE</button>
+                            <button className="loginButton" onClick={onSignup}>CRÉER MON COMPTE</button>
                         </div>
                         
                     </form>

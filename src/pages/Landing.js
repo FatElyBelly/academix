@@ -30,8 +30,14 @@ import homePageTransition from '../img/transitions/homePageTransition.svg'
 import aboutPageTransition from '../img/transitions/aboutPageTransition.svg'
 import contactPageTransition from '../img/transitions/contactPageTransition.svg'
 
+// Authentication
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 const Landing = () => {
     const ref = useRef()
+
+    const [user] = useAuthState(auth);
     
     return <Parallax pages={4} ref={ref}>
 
@@ -58,7 +64,7 @@ const Landing = () => {
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
           <div className="homePageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
-            <a href="/authentication" target="_blank"><button className="getStarted">Get started &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
+            <a href={user ? "/" : "/authentication"} target="_blank"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
         </div>
         </div>
       </div>

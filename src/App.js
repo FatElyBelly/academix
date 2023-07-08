@@ -7,19 +7,28 @@ import {
 
 // Pages
 import Landing from './pages/Landing.js'
-import Authentication from './pages/Authentication.js'
+import Home from './pages/Home.js'
 import Plans from './pages/Plans.js'
+// Auth pages
+import Authentication from './pages/Authentication.js'
+import Signout from './pages/Signout.js'
+
+// Authentication
+import { auth } from './firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
+
+  const [user] = useAuthState(auth)
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Landing/>}></Route>
-          <Route path="/home" element={<Landing/>}></Route>
-          <Route path="/authentication" element={<Authentication/>}></Route>
-          <Route path="/abonnements" element={<Plans/>}></Route>
+          <Route index element={user ? <Home/> : <Landing/>}></Route>
+          <Route path="/authentication" element={user ? <Signout/> : <Authentication/>}></Route>
+          <Route path="/abonnements" element={user ?<Plans/> : <Authentication/>}></Route>
+          <Route path="/signout" element={user ? <Signout/> : <Authentication/>}></Route>
         </Routes>
         
       </BrowserRouter>
