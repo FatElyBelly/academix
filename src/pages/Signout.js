@@ -13,9 +13,6 @@ const Signout = () => {
     const handleLogout = () => {               
         signOut(auth).then(() => {
             // Sign-out successful.
-            document.getElementsByClassName("signoutTitle")[0].innerHTML = "Vous êtes deconnecté."
-            document.getElementsByClassName("signoutButton")[0].innerHTML = "SE CONNECTER"
-            document.getElementsByClassName("signoutButton")[1].innerHTML = "RETOURNER"
             console.log("Signed out successfully")
         }).catch((error) => {
         // An error happened.

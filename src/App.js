@@ -26,7 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={user ? <Home/> : <Landing/>}></Route>
-          <Route path="/authentication" element={user ? <Signout/> : <Authentication/>}></Route>
+          <Route path="/authentication" element={<Authentication/>}></Route>
           <Route path="/abonnements" element={user ?<Plans/> : <Authentication/>}></Route>
           <Route path="/signout" element={user ? <Signout/> : <Authentication/>}></Route>
         </Routes>

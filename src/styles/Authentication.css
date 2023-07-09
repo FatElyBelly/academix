@@ -21,7 +21,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 25vw;
+    
     height: 90vh;
     border-radius: 25px;
     transition-duration: .2s;
@@ -37,7 +37,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 25vw;
     height: 80vh;
     border-radius: 25px;
     transition-duration: .2s;
@@ -71,7 +70,6 @@
 }
 
 .authContentTitle {
-    font-size: 3rem;
     color: #5541e9;
 }
 
@@ -133,7 +131,6 @@
     background: none;
     border: none;
     outline: none;
-    font-size: 1rem;
 }
 
 .authInput::placeholder {
@@ -150,7 +147,11 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
+}
+
+.forgotPasswordLink {
     color: #a3a3a3;
+    text-decoration: none;
 }
 
 .forgotPasswordLink:hover {
@@ -200,6 +201,13 @@
     gap: 1vw;
 }
 
+#loginCheckAnimation, #signupCheckAnimation {
+    display: none;
+    width: 50%;
+    height: auto;
+    justify-self: center;
+}
+
 .toSignupDiv {
     display: flex;
     color: #a3a3a3;
@@ -208,4 +216,52 @@
 .toSignupLink:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+/* Smartphones (portrait) */
+@media only screen and (max-width: 320px) {
+    /* Styles */
+    .loginContent, .signupContent {
+        width: 90vw;
+    }
+
+    .authContentTitle {
+        font-size: 1rem;
+    }
+
+    .authInput {
+        font-size: .25rem;
+    }
+}
+  
+/* iPads (portrait and landscape)  */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+    .loginContent, .signupContent {
+        width: 50vw;
+    }
+
+    .authContentTitle {
+        font-size: 2rem;
+    }
+
+    .authInput {
+        font-size: 1rem;
+    }
+}
+  
+/* Desktops and laptops  */
+@media only screen and (min-width: 1224px) {
+    /* Styles */
+    .loginContent, .signupContent {
+        width: 25vw;
+    }
+    
+    .authContentTitle {
+        font-size: 3rem;
+    }
+
+    .authInput {
+        font-size: 1rem;
+    }
 }
