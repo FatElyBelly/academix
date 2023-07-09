@@ -1,27 +1,31 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Auth
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 
-import { auth } from '../firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+// Google auth
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 // Import styles
 import '../styles/Authentication.css'
 
 // Components
-import QuickButton from '../components/QuickButton';
+import QuickButton from '../components/QuickButton'
 import Signout from '../pages/Signout.js'
 
 // Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 // Animations
 import Lottie from 'lottie-react'
 import animationData from '../img/animations/7Ywh6JcZ2l.json'
+
+const provider = new GoogleAuthProvider()
 
 const Authentication = () => {
     const [user] = useAuthState(auth)
@@ -66,6 +70,16 @@ const Authentication = () => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage)
+        });
+    }
+
+    const googleLogin = () => {
+        signInWithPopup(auth, provider).then((result) => {
+            // The signed-in user info.
+            const user = result.user
+            console.log(user)
+        }).catch((error) => {
+            // Handle Errors here.
         });
     }
 
@@ -222,8 +236,8 @@ const Authentication = () => {
                     <div className="authContentOther" id="authContentOther">
                         <span>Ou se connecter avec</span>
                         <div className="otherLoginMethods">
-                            <QuickButton type="circle" icon={faGoogle} iconName="google" link=""/>
-                            <QuickButton type="circle" icon={faFacebookF} iconName="facebook" link=""/>
+                            <QuickButton click={googleLogin} type="circle" icon={faGoogle} iconName="google"/>
+                            <QuickButton type="circle" icon={faFacebookF} iconName="facebook"/>
                         </div>
                     </div>
 
@@ -285,7 +299,7 @@ const Authentication = () => {
                                     label="Create password"
                                     placeholder="Recopier le mot de passe"
                                     className="authInput"
-                                    id="signupPasswordInput"
+                                    id="signupVerifyPasswordInput"
                                     />
                                 <FontAwesomeIcon id="signupShowPasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEye}/>
                                 <FontAwesomeIcon id="signupHidePasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEyeSlash}/>
@@ -302,7 +316,7 @@ const Authentication = () => {
                     <div className="authContentOther" id="signupAuthContentOther">
                         <span>Ou créer un compte avec</span>
                         <div className="otherLoginMethods">
-                            <QuickButton type="circle" icon={faGoogle} iconName="google" link=""/>
+                            <QuickButton click={googleLogin} type="circle" icon={faGoogle} iconName="google" link=""/>
                             <QuickButton type="circle" icon={faFacebookF} iconName="facebook" link=""/>
                         </div>
                     </div>

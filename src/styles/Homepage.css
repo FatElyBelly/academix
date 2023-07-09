@@ -28,13 +28,11 @@
 
 .homePageImg {
     width: auto;
-    height: 70%;
 }
 
 #welcomeTitle {
     font-family: Belanosima, sans-serif;
     color: #fff;
-    font-size: 10rem;
     margin: 0;
 }
 
@@ -42,7 +40,6 @@
     font-family: Belanosima, sans-serif;
     color: #fff;
     padding: 0;
-    font-size: 1.75rem;
 }
 
 .homePageButtons {
@@ -62,7 +59,6 @@
     padding: 20px 25px;
     transition-duration: .2s;
     color: #fff;
-    font-size: 20px;
 }
 
 .getStarted:hover {
@@ -78,11 +74,66 @@
     padding: 20px 25px;
     transition-duration: .2s;
     color: #fff;
-    font-size: 20px;
 }
 
 .toTrailerButton:hover {
     background: #22DDFE;
     border: 2px solid #22DDFE;
     cursor: pointer;
+}
+
+/* Smartphones (portrait) */
+@media only screen and (max-width: 320px) {
+    /* Styles */
+    #welcomeTitle {
+        font-size: 2rem;
+    }
+
+    #descriptionTitle {
+        font-size: 1.5rem;
+    }
+
+    .getStarted, .toTrailerButton {
+        font-size: 0.5rem;
+    }
+}
+  
+/* iPads (portrait and landscape)  */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+    #welcomeTitle {
+        font-size: 6rem;
+    }
+
+    .homePageImg {
+        height: 60%;
+    }
+
+    #descriptionTitle {
+        font-size: 1.5rem;
+    }
+
+    .getStarted, .toTrailerButton {
+        font-size: 1rem;
+    }
+}
+  
+/* Desktops and laptops  */
+@media only screen and (min-width: 1224px) {
+    /* Styles */
+    #welcomeTitle {
+        font-size: 10rem;
+    }
+
+    .homePageImg {
+        height: 70%;
+    }
+
+    #descriptionTitle {
+        font-size: 1.75rem;
+    }
+
+    .getStarted, .toTrailerButton {
+        font-size: 1rem;
+    }
 }
