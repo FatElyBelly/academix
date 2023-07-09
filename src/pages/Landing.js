@@ -64,7 +64,7 @@ const Landing = () => {
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
           <div className="homePageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
-            <a href={user ? "/" : "/authentication"} target="_blank"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
+            <a href={user ? "/" : "/authentication"} rel="noreferrer" target="_blank"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
         </div>
         </div>
       </div>
@@ -80,13 +80,7 @@ const Landing = () => {
       </div>
     </ParallaxLayer>
 
-    <ParallaxLayer
-      offset={0.6}
-      speed={0.2}
-      factor={1}
-    >
-      <Spacer backgroundImage={homePageTransition} height="300"/>
-    </ParallaxLayer>
+    <Spacer backgroundImage={homePageTransition} factor="0.65" offset="0.6"/>
 
     <ParallaxLayer
       offset={1}
@@ -154,13 +148,7 @@ quasi aliquam eligendi, placeat qui corporis!
       </div>
     </ParallaxLayer>
 
-    <ParallaxLayer
-      offset={1.99}
-      speed={0.2}
-      factor={1}
-    >
-      <Spacer backgroundImage={aboutPageTransition} height="170"/>
-    </ParallaxLayer>
+    <Spacer backgroundImage={aboutPageTransition} factor={0.6} offset={1.99}/>
 
     <ParallaxLayer
       offset={2}
@@ -206,13 +194,7 @@ quasi aliquam eligendi, placeat qui corporis!
       </div>
     </ParallaxLayer>
 
-    <ParallaxLayer
-      offset={2.78}
-      speed={0.2}
-      factor={1}
-    >
-      <Spacer backgroundImage={contactPageTransition} height="200"/>
-    </ParallaxLayer>
+    <Spacer backgroundImage={contactPageTransition} factor="0.4" offset="2.8"/>
 
     <ParallaxLayer
       offset={3}
