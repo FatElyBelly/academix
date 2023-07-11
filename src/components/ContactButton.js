@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Styles
-import '../styles/ContactButton.css'
+import '../styles/Components/ContactButton.css'
 
 const ContactButton = (props) => {
     const contactOpen = () => {

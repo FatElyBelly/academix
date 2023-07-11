@@ -1,4 +1,4 @@
-import '../styles/QuickButton.css'
+import '../styles/Components/QuickButton.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const QuickButton = (props) => {

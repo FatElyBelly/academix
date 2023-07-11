@@ -11,6 +11,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 // Import styles
 import '../styles/Authentication.css'
+import '../styles/Components/AlertBox.css'
 
 // Components
 import QuickButton from '../components/QuickButton'
@@ -18,12 +19,12 @@ import Signout from '../pages/Signout.js'
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEnvelope, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faLock, faEye, faEyeSlash, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 // Animations
 import Lottie from 'lottie-react'
-import animationData from '../img/animations/7Ywh6JcZ2l.json'
+import animationData from '../img/animations/check1.json'
 
 const provider = new GoogleAuthProvider()
 
@@ -35,15 +36,17 @@ const Authentication = () => {
     const signupCheckRef = useRef()
     const playLoginAnimation = () => {
         document.getElementById("loginCheckAnimation").style.display = "block"
+        loginCheckRef.current.setSpeed(1.5)
         loginCheckRef.current.goToAndPlay(0)
-        document.getElementById("authContentInputs").style.display = "none"
+        document.getElementById("loginButtonDiv").style.display = "none"
         document.getElementById("authContentOther").style.display = "none"
         document.getElementById("toSignupDiv").style.display = "none"
     }
     const playSignupAnimation = () => {
         document.getElementById("signupCheckAnimation").style.display = "block"
+        loginCheckRef.current.setSpeed(1.5)
         signupCheckRef.current.goToAndPlay(0)
-        document.getElementById("signupAuthContentInputs").style.display = "none"
+        document.getElementById("signupButtonDiv").style.display = "none"
         document.getElementById("signupAuthContentOther").style.display = "none"
         document.getElementById("toLoginDiv").style.display = "none"
     }
@@ -68,16 +71,22 @@ const Authentication = () => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
+            if (errorCode === "auth/wrong-password" || errorCode === "auth/user-not-found" || errorCode === "auth/invalid-email") {
+                console.log("Wrong credentials")
+                openAlertBox("Identifiants invalides", "Erreur de connexion: votre addresse mail ou votre mot de passe est incorrecte.")
+            }
+            console.log(errorCode)
         });
     }
 
     const googleLogin = () => {
         signInWithPopup(auth, provider).then((result) => {
-            // The signed-in user info.
+            // Signed in
+            setJustSigned(true)
             const user = result.user
             console.log(user)
+            // Show animation
+            playLoginAnimation()
         }).catch((error) => {
             // Handle Errors here.
         });
@@ -85,12 +94,13 @@ const Authentication = () => {
 
     // Signup functions
     const [signEmail, signSetEmail] = useState('')
-    const [signPassword, signSetPassword] = useState('');
+    const [signPassword, signSetPassword] = useState('')
+    const [signVerifyPassword, signSetVerifyPassword] = useState('')
  
     const onSignup = async (b) => {
       b.preventDefault()
-     
-      await createUserWithEmailAndPassword(auth, signEmail, signPassword)
+      if (signPassword === signVerifyPassword) {
+        await createUserWithEmailAndPassword(auth, signEmail, signPassword)
         .then((userCredential) => {
             // Signed in
             setJustSigned(true)
@@ -104,7 +114,11 @@ const Authentication = () => {
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
             // ..
-        });
+        })
+      } else {
+        openAlertBox("dsadjias0", "The passwords don't match")
+      }
+      
     }
 
     let currentPageLogin = true
@@ -123,6 +137,7 @@ const Authentication = () => {
                 document.getElementById("loginHidePasswordIcon").style.display = "none"
             }
         } else {
+            
             pswInput = document.getElementById("signupPasswordInput");
             if (pswInput.type === "password") {
                 pswInput.type = "text";
@@ -183,8 +198,27 @@ const Authentication = () => {
         }
     }
 
+    let openAlertBox = (title, text) => {
+        // document.getElementById("wrongCredentials").style.display = "flex"
+        document.getElementById("wrongCredentials").style.top = "2vh"
+        document.getElementById("alertTitle").innerHTML = title
+        document.getElementById("alertText").innerHTML = text
+    }
+
+    let closeAlertBox = () => {
+        // document.getElementById("wrongCredentials").style.display = "none"
+        document.getElementById("wrongCredentials").style.top = "-20vh"
+    }
+
     if (!user || justSigned){
         return <div className="authPage">
+            <div className="alertContainer" id="wrongCredentials">
+                <div className="alertBox">
+                    <FontAwesomeIcon onClick={closeAlertBox} className="alertClose" icon={faXmark}/>
+                    <h1 id="alertTitle" className="alertTitle">Error</h1>
+                    <p id="alertText" className="alertText"></p>
+                </div>
+            </div>
             <div className="loginContent" id="loginPage">
                 <div className="authContent">
                     <h1 className="authContentTitle">Connexion</h1>
@@ -193,7 +227,7 @@ const Authentication = () => {
                         <form className="authContentInputs">
                             <div className="authInputWrapDiv">
                                 <label className="authInputLabel">Addresse mail</label>
-                                <div className="authInputDiv">
+                                <div className="authInputDiv loginAuthInputDiv">
                                     <FontAwesomeIcon className="authInputIcon" icon={faEnvelope}/>
                                     <input
                                     type="email"
@@ -207,7 +241,7 @@ const Authentication = () => {
                             
                             <div className="authInputWrapDiv">
                                 <label className="authInputLabel">Mot de passe</label>
-                                <div className="authInputDiv">
+                                <div className="authInputDiv loginAuthInputDiv">
                                 <FontAwesomeIcon className="authInputIcon" icon={faLock}/>
                                     <input
                                     type="password"
@@ -226,7 +260,7 @@ const Authentication = () => {
                                 <a href="/" className="forgotPasswordLink">Mot de passe oublié?</a>
                             </div>
 
-                            <div className="loginButtonDiv">
+                            <div className="loginButtonDiv" id="loginButtonDiv">
                                 <button className="loginButton" onClick={onLogin}>SE CONNECTER</button>
                             </div>
                             
@@ -259,7 +293,7 @@ const Authentication = () => {
                         <form className="authContentInputs">
                             <div className="authInputWrapDiv">
                                 <label className="authInputLabel">Addresse mail</label>
-                                <div className="authInputDiv">
+                                <div className="authInputDiv signupAuthInputDiv">
                                     <FontAwesomeIcon className="authInputIcon" icon={faEnvelope}/>
                                     <input
                                     type="email"
@@ -274,7 +308,7 @@ const Authentication = () => {
                             
                             <div className="authInputWrapDiv">
                                 <label className="authInputLabel">Mot de passe</label>
-                                <div className="authInputDiv">
+                                <div className="authInputDiv signupAuthInputDiv">
                                 <FontAwesomeIcon className="authInputIcon" icon={faLock}/>
                                     <input
                                     type="password"
@@ -300,13 +334,13 @@ const Authentication = () => {
                                     placeholder="Recopier le mot de passe"
                                     className="authInput"
                                     id="signupVerifyPasswordInput"
+                                    required
+                                    onChange={(b) => signSetVerifyPassword(b.target.value)}
                                     />
-                                <FontAwesomeIcon id="signupShowPasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEye}/>
-                                <FontAwesomeIcon id="signupHidePasswordIcon" onClick={showPassword} className="showPasswordIcon" icon={faEyeSlash}/>
                                 </div>
                             </div>
 
-                            <div className="loginButtonDiv">
+                            <div className="loginButtonDiv" id="signupButtonDiv">
                                 <button className="loginButton" onClick={onSignup}>CRÉER MON COMPTE</button>
                             </div>
                             

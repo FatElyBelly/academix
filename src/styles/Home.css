@@ -1,0 +1,98 @@
+.homePage {
+    width: 100%;
+    height: 400vh;
+    margin: 0;
+    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.homePageMainContent {
+    display: flex;
+    flex-direction: row;
+    margin: 2vh 1vw;
+    margin-left: 7vw;
+    width: 90.8vw;
+    height: 96vh;
+    justify-content: space-between;
+}
+
+.homePageLeftContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44vw;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.homePageRightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 44vw;
+    height: 100%;
+    
+}
+
+.homePageRightContent .upperSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 42vw;
+    height: 40vh;
+    padding: 1vh 1vw;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.homePageRightContent .lowerSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 42vw;
+    height: 47vh;
+    padding: 1vh 1vw;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.sectionNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sectionNav .sectionTitle {
+    font-size: 2.5rem;
+    color: #5541e9;
+    align-self: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.sectionNav .sectionButton {
+    font-size: 1rem;
+    padding: 0 5vh;
+    height: 3rem;
+    border-radius: 25px;
+    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
+    color: #fff;
+    border: none;
+    transition-duration: .2s;
+}
+
+.sectionNav .sectionButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

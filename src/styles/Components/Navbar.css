@@ -1,0 +1,41 @@
+.navBar {
+    display: flex;
+    position: fixed;
+    background: #fff;
+    border-radius: 25px;
+    width: auto;
+    height: 92vh;
+    margin: 2vh 1vw;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2vh 1vw;
+    transition-duration: .2s;
+}
+
+.navLinkButton {
+    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    transition-duration: .2s;
+}
+
+.navLinkButton:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.navLinkInteract {
+    display: block;
+}
+
+.navLinkIcon {
+    font-size: 1.5rem;
+}
+
+#userNavLink {
+    justify-self: flex-end;
+}

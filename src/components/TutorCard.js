@@ -1,4 +1,4 @@
-import '../styles/TutorCard.css'
+import '../styles/Components/TutorCard.css'
 
 const TutorCard = (props) => {
     const cardId = props.tutorName + "Card"

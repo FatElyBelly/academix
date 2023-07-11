@@ -1,4 +1,4 @@
-import '../styles/PlanOption.css'
+import '../styles/Components/PlanOption.css'
 
 const PlanOption = (props) => {
     const cardId = props.planName + "Card"

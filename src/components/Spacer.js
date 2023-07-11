@@ -1,5 +1,5 @@
 import { ParallaxLayer } from '@react-spring/parallax'
-import '../styles/Spacer.css'
+import '../styles/Components/Spacer.css'
 
 const Spacer = (props) => {
     return <ParallaxLayer

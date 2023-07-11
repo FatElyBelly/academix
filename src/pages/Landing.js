@@ -9,10 +9,10 @@ import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import { faInstagram, faWhatsapp, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 // Styles
-import '../styles/HomePage.css'
-import '../styles/TrailerPage.css'
-import '../styles/AboutPage.css'
-import '../styles/ContactPage.css'
+import '../styles/Landing/LandingPage.css'
+import '../styles/Landing/TrailerPage.css'
+import '../styles/Landing/AboutPage.css'
+import '../styles/Landing/ContactPage.css'
 
 // Components
 import TutorCard from '../components/TutorCard.js'
@@ -20,13 +20,13 @@ import Spacer from '../components/Spacer.js'
 import ContactButton from '../components/ContactButton.js'
 
 // Wallpapers
-import homeBackground from '../img/backgrounds/homepageBackground.png'
+import landingBackground from '../img/backgrounds/landingPageBackground.png'
 import trailerBackground from '../img/backgrounds/trailerBackground.svg'
 import aboutBackground from '../img/backgrounds/aboutBackground.svg'
 import contactBackground from '../img/backgrounds/contactBackground.svg'
 
 // Transitions
-import homePageTransition from '../img/transitions/homePageTransition.svg'
+import landingPageTransition from '../img/transitions/landingPageTransition.svg'
 import aboutPageTransition from '../img/transitions/aboutPageTransition.svg'
 import contactPageTransition from '../img/transitions/contactPageTransition.svg'
 
@@ -46,7 +46,7 @@ const Landing = () => {
       speed={0.2}
       factor={1}
       style={{
-      backgroundImage: `url(${homeBackground})`,
+      backgroundImage: `url(${landingBackground})`,
       backgroundSize: 'cover',
       }}
     >
@@ -58,13 +58,13 @@ const Landing = () => {
       factor={1}
       sticky={{ start: 0, end: 0.1 }}
     >
-      <div className="homePage">
-        <div className="leftHomePage">
+      <div className="landingPage">
+        <div className="leftLandingPage">
           <h1 id="welcomeTitle">Academix</h1>
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
-          <div className="homePageButtons">
+          <div className="landingPageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
-            <a href={user ? "/" : "/authentication"} rel="noreferrer" target="_blank"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
+            <a href="/authentication" rel="noreferrer"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
         </div>
         </div>
       </div>
@@ -75,12 +75,12 @@ const Landing = () => {
       speed={0.2}
       factor={1}
     >
-      <div className="rightHomePage">
-        <img className="homePageImg" src={require('../img/backgrounds/homepage.png')} alt="Calculator"/>
+      <div className="rightLandingPage">
+        <img className="landingPageImg" src={require('../img/backgrounds/landing.png')} alt="Calculator"/>
       </div>
     </ParallaxLayer>
 
-    <Spacer backgroundImage={homePageTransition} factor="0.65" offset="0.6"/>
+    <Spacer backgroundImage={landingPageTransition} factor="0.65" offset="0.6"/>
 
     <ParallaxLayer
       offset={1}
