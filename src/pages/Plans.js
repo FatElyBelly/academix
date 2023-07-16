@@ -1,17 +1,20 @@
 // Styles
 import '../styles/PlansPage.css'
 
+// State
+import { useState } from 'react'
+
 // Components
 import PlanOption from '../components/PlanOption.js'
 import TutorCard from '../components/TutorCard.js'
 
 const Plans = () => {
 
-    let currentStep = 0
+    let [currentStep, setCurrentState] = useState(1)
     const nextStep = () => {
         // Increase step
-        if (currentStep<4){
-            currentStep++
+        if (currentStep<5){
+            setCurrentState(currentStep+1)
             // Animate text
             let steps = document.getElementsByClassName("eachStep")
             for (let i=0; i<currentStep; i++) {
@@ -38,8 +41,8 @@ const Plans = () => {
         <div className="pageContent">
             <div className="stepsTaken">
                 <h1 className="eachStep">1. Plan</h1>
-                <h1 className="eachStep">2. Planning</h1>
-                <h1 className="eachStep">3. Tuteur</h1>
+                <h1 className="eachStep">2. Tuteur</h1>
+                <h1 className="eachStep">3. Planning</h1>
                 <h1 className="eachStep">4. Paiement</h1>
             </div>
             <div className="progressBar">
@@ -53,17 +56,12 @@ const Plans = () => {
                 </div>
                 <div className="pageSection plansSection" id="section1" style={{display: "none"}}>
                     <div className="planOptions">
-                        <PlanOption planName="Basic"></PlanOption>
-                        <PlanOption planName="Plus"></PlanOption>
-                        <PlanOption planName="Premium"></PlanOption>
-                        <PlanOption planName="Idfk what"></PlanOption>
-                        <PlanOption planName="Idfk again"></PlanOption>
+                        <PlanOption name="Basic" price="4.99" addition="Package includes:" featureList={["Videos", "Support par chat"]}></PlanOption>
+                        <PlanOption name="Premium" price="49.99" addition="In addition to all features in Basic and Plus, also includes:" featureList={["Tutoring", "Contact", "Etc etc"]} important="important"></PlanOption>
+                        <PlanOption name="Plus" price="19.99" addition="In addition to all features in Basic, also includes:" featureList={["Etc etc", "Etc etc", "Etc etc"]}></PlanOption>
                     </div>
                 </div>
-                <div className="pageSection" id="section1" style={{display: "none"}}>
-                    <h1>Section 2</h1>
-                </div>
-                <div className="pageSection" id="section1" style={{display: "none"}}>
+                <div className="pageSection" id="section2" style={{display: "none"}}>
                     <div className="tutorOptionsBox">
                         <button>Left</button>
                         <div className="tutorOptionsCarousel">
@@ -155,8 +153,11 @@ const Plans = () => {
                     </div>
                     
                 </div>
-                <div className="pageSection" id="section1" style={{display: "none"}}>
-                    <h1>Section 4</h1>
+                <div className="pageSection" id="section3" style={{display: "none"}}>
+                    <h1>Section 1</h1>
+                </div>
+                <div className="pageSection" id="section4" style={{display: "none"}}>
+                    <h1>Paiement</h1>
                 </div>
                 <button onClick={nextStep}>Next</button>
             </div>

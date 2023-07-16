@@ -64,7 +64,7 @@ const Landing = () => {
           <p id="descriptionTitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium.</p>
           <div className="landingPageButtons">
             <button className="toTrailerButton" onClick={() => ref.current.scrollTo(1)}>Voir trailer</button>
-            <a href="/authentication" rel="noreferrer"><button className="getStarted">{user ? "Accueil" : "Get started"} &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
+            <a href="/authentication" rel="noreferrer"><button className="getStarted">Commencer &nbsp;<FontAwesomeIcon icon={faArrowRight} fade /></button></a>
         </div>
         </div>
       </div>

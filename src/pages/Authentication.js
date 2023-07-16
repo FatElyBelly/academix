@@ -9,6 +9,10 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 // Google auth
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
+// Firestore
+import { doc, setDoc } from "firebase/firestore"
+import { db } from '../firebase'
+
 // Import styles
 import '../styles/Authentication.css'
 import '../styles/Components/AlertBox.css'
@@ -19,7 +23,7 @@ import Signout from '../pages/Signout.js'
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEnvelope, faLock, faEye, faEyeSlash, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faLock, faEye, faEyeSlash, faXmark, faUser } from "@fortawesome/free-solid-svg-icons"
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 // Animations
@@ -29,6 +33,7 @@ import animationData from '../img/animations/check1.json'
 const provider = new GoogleAuthProvider()
 
 const Authentication = () => {
+    // User docs
     const [user] = useAuthState(auth)
 
     //Animations
@@ -64,8 +69,7 @@ const Authentication = () => {
         .then((userCredential) => {
             // Signed in
             setJustSigned(true)
-            const user = userCredential.user
-            console.log(user)
+            console.log(userCredential.user)
             // Show animation
             playLoginAnimation()
         })
@@ -83,8 +87,9 @@ const Authentication = () => {
         signInWithPopup(auth, provider).then((result) => {
             // Signed in
             setJustSigned(true)
-            const user = result.user
-            console.log(user)
+            signSetUsername(result.user.displayName)
+            adduser(result.user)
+            console.log(result.user)
             // Show animation
             playLoginAnimation()
         }).catch((error) => {
@@ -92,10 +97,23 @@ const Authentication = () => {
         });
     }
 
-    // Signup functions
     const [signEmail, signSetEmail] = useState('')
     const [signPassword, signSetPassword] = useState('')
+    const [signUsername, signSetUsername] = useState('')
     const [signVerifyPassword, signSetVerifyPassword] = useState('')
+
+    const adduser = async (u) => {
+        try {
+            await setDoc(doc(db, "users", u.uid), {
+                email: u.email,
+                username: signUsername,
+                uid: u.uid,
+                subscription: "none",
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    }
  
     const onSignup = async (b) => {
       b.preventDefault()
@@ -104,8 +122,8 @@ const Authentication = () => {
         .then((userCredential) => {
             // Signed in
             setJustSigned(true)
-            const user = userCredential.user;
-            console.log(user);
+            adduser(userCredential.user)
+            console.log(userCredential.user);
             // Show animation
             playSignupAnimation()
         })
@@ -302,6 +320,21 @@ const Authentication = () => {
                                     className="authInput"
                                     required
                                     onChange={(b) => signSetEmail(b.target.value)}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="authInputWrapDiv">
+                                <label className="authInputLabel">Identifiant</label>
+                                <div className="authInputDiv signupAuthInputDiv">
+                                    <FontAwesomeIcon className="authInputIcon" icon={faUser}/>
+                                    <input
+                                    type="email"
+                                    label="Username"
+                                    placeholder="Entrer l'identifiant"
+                                    className="authInput"
+                                    required
+                                    onChange={(b) => signSetUsername(b.target.value)}
                                     />
                                 </div>
                             </div>

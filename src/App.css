@@ -10,6 +10,16 @@ body {
   background-color: #fff;
 }
 
+.copyright {
+  position: fixed;
+  bottom: 1vh;
+  right: 1vw;
+  z-index: 100;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .7rem;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 15px;

@@ -1,0 +1,61 @@
+.homePageActivitySection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+    width: 20vw;
+    height: 44vh;
+    padding: 3vh 0;
+    background: url(../../img/backgrounds/plansBackground.svg) no-repeat center center fixed;
+    border-radius: 25px;
+}
+
+.homePageActivitySectionUnlocked {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    height: 44vh;
+    padding: 3vh 0;
+    background: url(../../img/backgrounds/plansBackground.svg) no-repeat center center fixed;
+    border-radius: 25px;
+}
+
+.homePageActivitySectionIcon {
+    width: 3vw;
+    height: auto;
+    color: #fff;
+    margin: 0;
+}
+
+.homePageActivitySectionIconUnlocked {
+    width: 7vw;
+    height: auto;
+    color: #fff;
+    margin: 0;
+}
+
+.homePageActivitySectionText {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+}
+
+.homePageActivitySectionButton {
+    border: 2px solid #fff;
+    background: none;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    transition-duration: .2s;
+    margin: 0;
+}
+
+.homePageActivitySectionButton:hover {
+    cursor: pointer;
+    background: #fff;
+    color: #5541e9;
+    transform: scale(1.2);
+}

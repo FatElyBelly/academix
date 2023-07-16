@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <span className="copyright">&copy; Academix 2023</span>
       <BrowserRouter>
         <Routes>
           <Route index element={user ? <Home/> : <Landing/>}></Route>
