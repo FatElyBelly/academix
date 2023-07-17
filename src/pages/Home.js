@@ -1,10 +1,9 @@
 // Components
-import NavigationBar from '../components/NavigationBar.js'
 import HomePageActivitySection from '../components/HomePageActivitySection.js'
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark, faLock, faUser, faCirclePlay, faBook } from "@fortawesome/free-solid-svg-icons"
+import { faXmark, faUser, faCirclePlay, faBook, faChalkboardUser } from "@fortawesome/free-solid-svg-icons"
 
 // Styles
 import '../styles/Home.css'
@@ -47,13 +46,14 @@ const Home = () => {
         }
     }
 
-    const handleLogout = () => {               
+    const handleLogout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             console.log("Signed out successfully")
             navigate("/")
         }).catch((error) => {
-        // An error happened.
+            // An error happened.
+            console.log(error)
         });
     }
 
@@ -96,11 +96,6 @@ const Home = () => {
         </div>
 
         <div id="page">
-            <NavigationBar
-                homepage={() => {document.getElementById("homePageMainContent").scrollIntoView()}}
-                videopage={() => {document.getElementById("homeVideoSectionContent").scrollIntoView()}}
-                signout={() => {openAlertBox('Are you sure you want to logout?', undefined, "page", 'Oui', handleLogout)}}
-            />
             
             <div className="homePageContent" id="homePageMainContent">
                 <div className="homeSection homePageSection">
@@ -110,42 +105,35 @@ const Home = () => {
                             <h2 className="homePageSectionTopSubTitle">Que voulez-vous faire aujourd'hui?</h2>
                         </div>
                         <div className="homePageSectionTopRight">
-                            <button className="defaultButton"><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</button>
+                            <button onClick={()=>{openAlertBox("Etes-vous", undefined, "page", "Oui", handleLogout)}} className="defaultButton"><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</button>
                         </div>
                     </div>
 
                     <div className="homePageSectionContent">
                         <HomePageActivitySection
-                        unlocked={(userData.subscription==="basic") ? true : false}
+                        unlocked={(userData.subscription==="basic"||userData.subscription==="plus"||userData.subscription==="premium") ? true : false}
                         subType="Basic"
                         title="Videos"
                         icon={faCirclePlay}
+                        openPage="videos"
                         />
                         
                         <HomePageActivitySection
-                        unlocked={(userData.subscription==="plus") ? true : false}
+                        unlocked={(userData.subscription==="plus"||userData.subscription==="premium") ? true : false}
                         subType="Plus"
-                        title="Exercises"
+                        title="Exercices"
                         icon={faBook}
                         />
                         
                         <HomePageActivitySection
                         unlocked={(userData.subscription==="premium") ? true : false}
                         subType="Premium"
-                        title="Dsadasda"
-                        icon={faBook}
+                        title="Tutorat"
+                        icon={faChalkboardUser}
                         />
                     </div>
 
                     <div></div>
-                </div>
-            </div>
-            
-            <div className="homePageContent" id="homeVideoSectionContent">
-                <div className="homeSection homeVideoSection">
-                    <FontAwesomeIcon className="lockIcon" icon={faLock}/>
-                    <h1 className="lockText">Achetez un abonnement pour avoir acces aux videos.</h1>
-                    <button className="defaultButton" onClick={() => {window.open("/abonnements")}}>Voir</button>
                 </div>
             </div>
         </div>

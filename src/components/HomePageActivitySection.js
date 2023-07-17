@@ -10,13 +10,13 @@ const HomePageActivitySection = (props) => {
         return <div className="homePageActivitySectionUnlocked">
             <h1 className="homePageActivitySectionText">{props.title}</h1>
             <FontAwesomeIcon className="homePageActivitySectionIconUnlocked" icon={props.icon}/>
-            <button onClick={()=>{window.open("/abonnements")}}className="homePageActivitySectionButton">Voir</button>
+            <button onClick={()=>{window.open("/" + props.openPage, "_self")}} className="homePageActivitySectionButton">Voir</button>
         </div>
     } else {
         return <div className="homePageActivitySection">
             <FontAwesomeIcon className="homePageActivitySectionIcon" icon={faLock}/>
             <h1 className="homePageActivitySectionText">Achetez un abonnement {props.subType}</h1>
-            <button onClick={()=>{window.open("/abonnements")}}className="homePageActivitySectionButton">Voir</button>
+            <button onClick={()=>{window.open("/abonnements", "_self")}} className="homePageActivitySectionButton">Voir</button>
         </div>
     }
 }

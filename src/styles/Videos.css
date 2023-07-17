@@ -1,0 +1,111 @@
+/* Page style */
+
+.videosPage {
+    width: 98vw;
+    height: auto;
+    padding: 2vh 1vw;
+    margin: 0;
+    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+/* Sidenav style */
+
+.videosPageSidenav {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 12vw;
+    height: 92vh;
+    padding: 2vh 1vw;
+    background-color: #fff;
+    border-radius: 25px;
+    gap: 2vh;
+}
+
+.videosPageSidenavSection {
+    padding: 2vh 2vw;
+    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    border-radius: 25px;
+}
+
+.sideNavSectionTitle {
+    margin: 0;
+    color: #fff;
+}
+
+.sideNavSectionButtons {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.sideNavSectionButton {
+    width: 100%;
+    padding: 1vh 1vw;
+    border: 2px solid #fff;
+    border-radius:25px;
+    color: #fff;
+    background: none;
+    transition-duration: .2s;
+}
+
+.sideNavSectionButton:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #5541e9;
+    transform: scale(1.2);
+}
+
+/* Videos style */
+
+.videosPageContent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15vw;
+    width: 83vw;
+    height: 96vh;
+    gap: 3vh;
+}
+
+.videosPageContentChapter {
+    display: flex;
+    flex-direction: column;
+    width: 79vw;
+    padding: 2vh 2vw;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.videosPageContentChapterTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.videosPageContentChapterTitle {
+    font-size: 2rem;
+    margin: 0;
+    color: #5541e9;
+}
+
+.videosPageContentChapterIcon {
+    font-size: 2rem;
+    color: #FE56F9;
+    transition-duration: .2s;
+}
+
+.videosPageContentChapterIcon:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}

@@ -10,7 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 // Firestore
-import { doc, setDoc } from "firebase/firestore"
+import { query, doc, setDoc, getDocs, collection, where } from "firebase/firestore"
 import { db } from '../firebase'
 
 // Import styles
@@ -47,6 +47,7 @@ const Authentication = () => {
         document.getElementById("authContentOther").style.display = "none"
         document.getElementById("toSignupDiv").style.display = "none"
     }
+
     const playSignupAnimation = () => {
         document.getElementById("signupCheckAnimation").style.display = "block"
         loginCheckRef.current.setSpeed(1.5)
@@ -83,18 +84,22 @@ const Authentication = () => {
         });
     }
 
-    const googleLogin = () => {
-        signInWithPopup(auth, provider).then((result) => {
-            // Signed in
+    const googleLogin = async () => {
+
+        try {
+            const res = await signInWithPopup(auth, provider);
+            const newUser = res.user;
             setJustSigned(true)
-            signSetUsername(result.user.displayName)
-            adduser(result.user)
-            console.log(result.user)
-            // Show animation
+            const userQuery = query(collection(db, "users"), where("uid", "==", newUser.uid));
+            const docs = await getDocs(userQuery);
+            if (docs.docs.length === 0) {
+                signSetUsername(res.user.displayName)
+                adduser(newUser, true)
+            }
             playLoginAnimation()
-        }).catch((error) => {
-            // Handle Errors here.
-        });
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     const [signEmail, signSetEmail] = useState('')
@@ -102,14 +107,26 @@ const Authentication = () => {
     const [signUsername, signSetUsername] = useState('')
     const [signVerifyPassword, signSetVerifyPassword] = useState('')
 
-    const adduser = async (u) => {
+    const adduser = async (u, withGoogle) => {
         try {
-            await setDoc(doc(db, "users", u.uid), {
-                email: u.email,
-                username: signUsername,
-                uid: u.uid,
-                subscription: "none",
-            })
+            if (withGoogle) {
+                await setDoc(doc(db, "users", u.uid), {
+                    email: u.email,
+                    username: u.displayName,
+                    uid: u.uid,
+                    subscription: "none",
+                    method: "google",
+                })
+            } else {
+                await setDoc(doc(db, "users", u.uid), {
+                    email: u.email,
+                    username: signUsername,
+                    uid: u.uid,
+                    subscription: "none",
+                    method: "email",
+                })
+            }
+            
         } catch(error) {
             console.log(error)
         }
@@ -122,7 +139,7 @@ const Authentication = () => {
         .then((userCredential) => {
             // Signed in
             setJustSigned(true)
-            adduser(userCredential.user)
+            adduser(userCredential.user, false)
             console.log(userCredential.user);
             // Show animation
             playSignupAnimation()
@@ -139,7 +156,7 @@ const Authentication = () => {
       
     }
 
-    let currentPageLogin = true
+    const [currentPageLogin, setCurrentPageLogin] = useState(true)
 
     let showPassword = () => {
         let pswInput;
@@ -198,7 +215,7 @@ const Authentication = () => {
             document.getElementById("signupPage").style.height = "90vh"
             document.getElementById("signupPage").style.pointerEvents = "all"
 
-            currentPageLogin = false
+            setCurrentPageLogin(false)
         } else {
             document.getElementById("loginPage").style.zIndex = "10"
             document.getElementById("loginPage").style.opacity = "1"
@@ -212,7 +229,7 @@ const Authentication = () => {
             document.getElementById("signupPage").style.height = "80vh"
             document.getElementById("signupPage").style.pointerEvents = "none"
 
-            currentPageLogin = true
+            setCurrentPageLogin(true)
         }
     }
 
@@ -296,7 +313,7 @@ const Authentication = () => {
                     <div className="toSignupDiv" id="toSignupDiv">
                         <p className="toSignupLink" onClick={changePage}>Pas de compte? Creer un</p>
                     </div>
-                    <Lottie onComplete={() => {navigate("/")}}id="loginCheckAnimation" lottieRef={loginCheckRef} loop={false} autoplay={false} animationData={animationData}/>
+                    <Lottie onComplete={() => {navigate("/")}} id="loginCheckAnimation" lottieRef={loginCheckRef} loop={false} autoplay={false} animationData={animationData}/>
                 </div>
             </div>
 
