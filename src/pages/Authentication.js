@@ -41,7 +41,6 @@ const Authentication = () => {
     const signupCheckRef = useRef()
     const playLoginAnimation = () => {
         document.getElementById("loginCheckAnimation").style.display = "block"
-        loginCheckRef.current.setSpeed(1.5)
         loginCheckRef.current.goToAndPlay(0)
         document.getElementById("loginButtonDiv").style.display = "none"
         document.getElementById("authContentOther").style.display = "none"
@@ -50,7 +49,6 @@ const Authentication = () => {
 
     const playSignupAnimation = () => {
         document.getElementById("signupCheckAnimation").style.display = "block"
-        loginCheckRef.current.setSpeed(1.5)
         signupCheckRef.current.goToAndPlay(0)
         document.getElementById("signupButtonDiv").style.display = "none"
         document.getElementById("signupAuthContentOther").style.display = "none"

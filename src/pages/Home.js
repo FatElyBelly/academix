@@ -105,7 +105,7 @@ const Home = () => {
                             <h2 className="homePageSectionTopSubTitle">Que voulez-vous faire aujourd'hui?</h2>
                         </div>
                         <div className="homePageSectionTopRight">
-                            <button onClick={()=>{openAlertBox("Etes-vous", undefined, "page", "Oui", handleLogout)}} className="defaultButton"><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</button>
+                            <button onClick={()=>{openAlertBox("Êtes-vous sûr de vouloir vous déconnecter?", undefined, "page", "Oui", handleLogout)}} className="defaultButton"><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</button>
                         </div>
                     </div>
 
