@@ -7,7 +7,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons"
 
 const HomePageActivitySection = (props) => {
     if (props.unlocked) {
-        return <div className="homePageActivitySectionUnlocked">
+        return <div className={`homePageActivitySectionUnlocked ${props.difBackground}`}>
             <h1 className="homePageActivitySectionText">{props.title}</h1>
             <FontAwesomeIcon className="homePageActivitySectionIconUnlocked" icon={props.icon}/>
             <button onClick={()=>{window.open("/" + props.openPage, "_self")}} className="homePageActivitySectionButton">Voir</button>

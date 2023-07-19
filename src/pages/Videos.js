@@ -20,11 +20,8 @@ const Videos = () => {
     const [user] = useAuthState(auth)
 
     useEffect(() => {
-        // getChapterList(userClasses[selectedClass])
         getUserClasses(user)
-    })
-
-    useEffect(() => {
+        getChapterList(userClasses[selectedClass])
         changeSelectedClassButton()
         console.log('render1')
     })
@@ -48,7 +45,9 @@ const Videos = () => {
         let docRef = doc(db, "users", u.uid)
         let docSnap = await getDoc(docRef)
         if (docSnap.exists()) {
-            setUserClasses(docSnap.data().classes)
+            if (!(userClasses.some(userClass => userClass.id === docSnap.data().id))) {
+                setUserClasses(docSnap.data().classes)
+            }
         } else {
             console.log("No document")
             return null
@@ -60,32 +59,35 @@ const Videos = () => {
     const getChapterList = async(classname) => {
         let chapterCollection = collection(db, `classes/${classname}/chapitres`)
         let chapterQuery = query(chapterCollection)
+        console.log(chapterCollection)
         const chapterQuerySnapshot = await getDocs(chapterQuery)
         chapterQuerySnapshot.forEach((doc) => {
-            if (!(chapters.some(chapter => chapter.title === doc.data().title))) {
+            if (!(chapters.some(chapter => chapter.id === doc.data().id))) {
                 let docData = doc.data()
                 docData["showed"] = false
-                docData["icon"] = faChevronDown
                 setChapters(current => [...current, docData])
-                console.log(docData)
             }
         })
     }
 
-    const toggleChapter = (chapterIndex) => {
+    const toggleChapter = async (chapterIndex) => {
         let chapterData = chapters
         if (chapters[chapterIndex].showed) {      
             document.getElementById("videosPageContentChapterMain"+chapterIndex).style.display = "none"
             document.getElementById("videosPageContentChapterTop"+chapterIndex).style.borderBottomLeftRadius = "25px"
             document.getElementById("videosPageContentChapterTop"+chapterIndex).style.borderBottomRightRadius = "25px"
+            document.getElementById("videosPageContentChapterIconHide"+chapterIndex).style.display = "none"
+            document.getElementById("videosPageContentChapterIconShow"+chapterIndex).style.display = "flex"
             chapterData[chapterIndex]["showed"] = false
-            chapterData[chapterIndex]["icon"] = faChevronDown
+            console.log(`Closed ${chapterData[chapterIndex].title}, Chapter showed? ${chapterData[chapterIndex].showed}`)
         } else {
             document.getElementById("videosPageContentChapterMain"+chapterIndex).style.display = "flex"
             document.getElementById("videosPageContentChapterTop"+chapterIndex).style.borderBottomLeftRadius = "0"
             document.getElementById("videosPageContentChapterTop"+chapterIndex).style.borderBottomRightRadius = "0"
+            document.getElementById("videosPageContentChapterIconHide"+chapterIndex).style.display = "flex"
+            document.getElementById("videosPageContentChapterIconShow"+chapterIndex).style.display = "none"
             chapterData[chapterIndex]["showed"] = true
-            chapterData[chapterIndex]["icon"] = faChevronUp
+            console.log(`Opened ${chapterData[chapterIndex].title}, Chapter showed? ${chapterData[chapterIndex].showed}`)
         }
         setChapters(chapterData)
     }
@@ -126,7 +128,8 @@ const Videos = () => {
                         return <div id={"videosPageContentChapter"+index} className="videosPageContentChapter">
                             <div onClick={() => {toggleChapter(index)}} id={"videosPageContentChapterTop"+index} className="videosPageContentChapterTop">
                                 <h1 className="videosPageContentChapterTitle">{chapter.title}</h1>
-                                <FontAwesomeIcon className="videosPageContentChapterIcon" icon={chapter.icon}/>
+                                <FontAwesomeIcon id={"videosPageContentChapterIconShow"+index} className="videosPageContentChapterIcon" icon={faChevronDown}/>
+                                <FontAwesomeIcon style={{display: "none"}} id={"videosPageContentChapterIconHide"+index}className="videosPageContentChapterIcon" icon={faChevronUp}/>
                             </div>
                             <div id={"videosPageContentChapterMain"+index} className="videosPageContentChapterMain">
                                 {chapter.videos.map((video, vidIndex) => {

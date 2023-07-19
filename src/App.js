@@ -13,7 +13,7 @@ import Plans from './pages/Plans.js'
 import Videos from './pages/Videos.js'
 // Auth pages
 import Authentication from './pages/Authentication.js'
-import Signout from './pages/Signout.js'
+import Signout from './pages/Account.js'
 
 // Authentication
 import { auth } from './firebase';

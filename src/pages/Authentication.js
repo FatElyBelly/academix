@@ -19,7 +19,7 @@ import '../styles/Components/AlertBox.css'
 
 // Components
 import QuickButton from '../components/QuickButton'
-import Signout from '../pages/Signout.js'
+import Account from './Account.js'
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -411,7 +411,7 @@ const Authentication = () => {
             </div>
         </div>
     } else {
-        return <Signout/>
+        return <Account/>
     }
 }
 

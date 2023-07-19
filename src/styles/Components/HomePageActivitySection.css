@@ -23,6 +23,10 @@
     border-radius: 25px;
 }
 
+.blueGreenBackground {
+    background: url(../../img/backgrounds/aboutBackground.svg) no-repeat center center fixed;;
+}
+
 .homePageActivitySectionIcon {
     width: 3vw;
     height: auto;
