@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
 
+:root {
+  --main-background: url(./img/backgrounds/plansBackground.svg) no-repeat center center fixed;
+  --purple: #5541e9;
+  --pink: #FE56F9;
+  --cyan: #22DDFE;
+  --green: #1AFF79;
+  --orange: #FA7268;
+}
+
 html {
   font-family: Belanosima, sans-serif;
   scroll-behavior: smooth;

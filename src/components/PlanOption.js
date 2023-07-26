@@ -23,30 +23,21 @@ const PlanOption = (props) => {
         }
     }
 
-    const hoveredCard = () => {
-        document.getElementById(cardId).style.transform = "scale(1.1)"
-    }
-    const unhoveredCard = () => {
-        if (!cardClicked) {
-            document.getElementById(cardId).style.transform = "scale(1)"
-        }
-    }
-
-    return <div className={"planCard " + props.important} id={cardId}>
+    return <div className={"planCard " + props.variation} id={cardId}>
         <h1 className="planCardTitleW" style={{color: "#fff"}} id={cardTitle}>{props.name}</h1>
-        <div className="planCardInnerContent">
-            <div className="priceDiv">
-                <h1 className="priceText">€ {props.price}</h1>
+        <div className={"planCardInnerContent " + props.variation}>
+            <div className={"priceDiv " + props.variation}>
+                <h1 className={"priceText " + props.variation}>€ {props.price}</h1>
             </div>
             <div className="planFeaturesList">
-                <p className="planCardText">{props.addition}</p>
+                <p className={"planCardText " + props.variation}>{props.addition}</p>
                 {props.featureList.map((feature) => {
                     return (
-                        <p className="planFeature"><FontAwesomeIcon className="planFeatureIcon" icon={faCheck}/>&nbsp;{feature}</p>
+                        <p className={"planFeature " + props.variation}><FontAwesomeIcon className={"planFeatureIcon " + props.variation} icon={faCheck}/>&nbsp;{feature}</p>
                     )
                 })}
             </div>
-            <button className="planSubscribeButton" id={cardId + "SubscribeButton"} onClick={clickedCard} onMouseEnter={hoveredCard} onMouseLeave={unhoveredCard}>Choisir</button>
+            <button className={"planSubscribeButton " + props.variation} id={cardId + "SubscribeButton"} onClick={clickedCard}>Choisir</button>
         </div>
         
         

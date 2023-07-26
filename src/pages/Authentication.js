@@ -114,6 +114,7 @@ const Authentication = () => {
                     uid: u.uid,
                     subscription: "none",
                     method: "google",
+                    classes: [],
                 })
             } else {
                 await setDoc(doc(db, "users", u.uid), {

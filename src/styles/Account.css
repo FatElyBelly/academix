@@ -6,11 +6,56 @@
     width: 100%;
     height: 100vh;
     margin: 0;
-    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    background: var(--main-background); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+/* Left side of page */
+
+.accountInfoDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 24vw;
+    height: 85vh;
+    border-radius: 25px;
+}
+
+.accountInfoPartDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 37.5vh;
+    padding: 2vh 0;
+    border-radius: 25px;
+    background: var(--main-background); 
+}
+
+.accountInfoTitle {
+    margin: 0;
+    color: #fff;
+    font-size: 1.75rem;
+}
+
+.accountInfoInnerDiv {
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5vh;
+}
+
+.accountInfoText {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #fff;
 }
 
 /* Right side of page */
@@ -21,7 +66,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 24vw;
-    height: 56vh;
+    height: 85vh;
     padding: 2vh 0;
     gap: 1vh;
 }
@@ -38,7 +83,7 @@
     justify-content: space-between;
     align-items: center;
     width: 50vw;
-    height: 60vh;
+    height: 85vh;
     border-radius: 25px;
     padding: 3vh 1vw;
     transition-duration: .2s;
@@ -52,7 +97,7 @@
     border: none;
     border-radius: 15px;
     font-family: Roboto, sans-serif;
-    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
+    background: linear-gradient( 90deg, #5541e9, var(--pink) );
     color: #fff;
     transition-duration: .2s;
 }
@@ -60,38 +105,4 @@
 .signoutButton:hover {
     cursor: pointer;
     transform: scale(1.2);
-}
-
-/* Left side of page */
-
-.accountInfoDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 24vw;
-    height: 56vh;
-    padding: 2vh 0;
-    border-radius: 25px;
-    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
-}
-
-.accountInfoTitle {
-    margin: 0;
-    color: #fff;
-}
-
-.accountInfoInnerDiv {
-    display: flex;
-    width: 20vw;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1.5vh;
-}
-
-.accountInfoText {
-    font-size: 1.75rem;
-    margin: 0;
-    color: #fff;
 }

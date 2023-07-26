@@ -174,7 +174,7 @@
     border: none;
     border-radius: 15px;
     font-family: Roboto, sans-serif;
-    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
+    background: linear-gradient( 90deg, #5541e9, var(--pink) );
     color: #fff;
     transition-duration: .2s;
 }

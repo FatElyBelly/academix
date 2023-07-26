@@ -2,10 +2,10 @@
 
 .videosPage {
     width: 98vw;
-    height: auto;
+    height: 200vh;
     padding: 2vh 1vw;
     margin: 0;
-    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    background: var(--main-background); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,7 +17,7 @@
 
 /* Sidenav style */
 
-.videosPageSidenav {
+.contentPageSidenav {
     display: flex;
     position: fixed;
     flex-direction: column;
@@ -31,25 +31,25 @@
     gap: 2vh;
 }
 
-.videosPageSidenavSection {
+.contentPageSidenavSection {
     padding: 2vh 2vw;
-    background: url(../img/backgrounds/plansBackground.svg) no-repeat center center fixed; 
+    background: var(--main-background); 
     border-radius: 25px;
 }
 
-.sideNavSectionTitle {
+.contentSidenavSectionTitle {
     margin: 0;
     color: #fff;
 }
 
-.sideNavSectionButtons {
+.contentSidenavSectionButtons {
     margin-top: 3vh;
     display: flex;
     flex-direction: column;
     gap: 2vh;
 }
 
-.sideNavSectionButton {
+.contentSidenavSectionButton {
     width: 100%;
     padding: 1vh 1vw;
     border: 2px solid #fff;
@@ -59,32 +59,32 @@
     transition-duration: .2s;
 }
 
-.sideNavSectionButton:hover {
+.contentSidenavSectionButton:hover {
     cursor: pointer;
     background-color: #fff;
-    color: #5541e9;
+    color: var(--purple);
     transform: scale(1.2);
 }
 
 /* Videos style */
 
-.videosPageContent {
+.contentPageContent {
     display: flex;
     flex-direction: column;
     margin-left: 15vw;
-    width: 83vw;
+    width: 82vw;
     height: 96vh;
     gap: 3vh;
 }
 
-.videosPageContentChapter {
+.contentPageContentChapter {
     display: flex;
     flex-direction: column;
-    width: 79vw;
+    width: 100%;
     border-radius: 25px;
 }
 
-.videosPageContentChapterTop {
+.contentPageContentChapterTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -98,29 +98,29 @@
     transition-duration: .2s;
 }
 
-.videosPageContentChapterTop:hover {
+.contentPageContentChapterTop:hover {
     cursor: pointer;
     filter: brightness(90%);
 }
 
-.videosPageContentChapterTitle {
+.contentPageContentChapterTitle {
     font-size: 2rem;
     margin: 0;
-    color: #5541e9;
+    color: var(--purple);
 }
 
-.videosPageContentChapterIcon {
+.contentPageContentChapterIcon {
     font-size: 2rem;
-    color: #FE56F9;
+    color: var(--pink);
     transition-duration: .2s;
 }
 
-.videosPageContentChapterIcon:hover {
+.contentPageContentChapterIcon:hover {
     cursor: pointer;
     transform: scale(1.2);
 }
 
-.videosPageContentChapterMain {
+.contentPageContentChapterMain {
     display: none;
     background-color: #fff;
     padding: 2vh 2vw;

@@ -43,7 +43,7 @@
 }
 
 button.instagram:hover {
-    background-color: #FE56F9;
+    background-color: var(--pink);
 }
 
 button.email:hover {

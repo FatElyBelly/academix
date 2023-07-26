@@ -9,6 +9,9 @@ import { faUser, faCirclePlay, faBook, faChalkboardUser } from "@fortawesome/fre
 import '../styles/Home.css'
 import '../styles/Components/AlertBox.css'
 
+// Buttons
+import GradientButton from '../components/Reusables/GradientButton.js'
+
 // Auth
 import {auth} from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -54,7 +57,7 @@ const Home = () => {
                             <h2 className="homePageSectionTopSubTitle">Que voulez-vous faire aujourd'hui?</h2>
                         </div>
                         <div className="homePageSectionTopRight">
-                            <button onClick={()=>{window.open('/authentication', "_self")}} className="defaultButton"><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</button>
+                            <GradientButton text={<span><FontAwesomeIcon icon={faUser}/>&nbsp; Mon compte</span>} function={()=>{window.open('/authentication', "_self")}}/>
                         </div>
                     </div>
 
@@ -80,6 +83,7 @@ const Home = () => {
                         subType="Plus"
                         title="Exercices"
                         icon={faBook}
+                        openPage="exercices"
                         />
                     </div>
 

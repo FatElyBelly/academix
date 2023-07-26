@@ -1,0 +1,19 @@
+/* Page style */
+
+.exercicesPage {
+    width: 98vw;
+    height: 96vh;
+    padding: 2vh 1vw;
+    margin: 0;
+    background: var(--main-background); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+/* Sidenav style */
+/* On Videos.css */

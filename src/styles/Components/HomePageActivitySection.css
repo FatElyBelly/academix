@@ -46,20 +46,3 @@
     color: #fff;
     margin: 0;
 }
-
-.homePageActivitySectionButton {
-    border: 2px solid #fff;
-    background: none;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    transition-duration: .2s;
-    margin: 0;
-}
-
-.homePageActivitySectionButton:hover {
-    cursor: pointer;
-    background: #fff;
-    color: #5541e9;
-    transform: scale(1.2);
-}

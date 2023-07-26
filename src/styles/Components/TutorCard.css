@@ -40,18 +40,18 @@
 .tutorTitle {
     height: 10vh;
     font-size: 2rem;
-    color: #5541e9;
+    color: var(--purple);
 }
 
 .tutorDescription {
     padding: 0 1.5rem;
     font-size: 1.05rem;
-    color: #5541e9;
+    color: var(--purple);
 }
 
 .tutorYear {
     font-size: 1.2rem;
-    color: #5541e9;
+    color: var(--purple);
 }
 
 .tutorImg {
@@ -68,7 +68,7 @@
     padding: 1rem 0;
     color: #fff;
     transition-duration: .2s;
-    background-color: #5541e9;
+    background-color: var(--purple);
     pointer-events: all;
 }
 

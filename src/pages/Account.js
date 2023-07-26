@@ -9,9 +9,13 @@ import {auth} from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom';
 
+// Buttons
+import WhiteButton from '../components/Reusables/WhiteButton.js'
+import GradientButton from '../components/Reusables/GradientButton.js';
+
 // Icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark, faUser, faEnvelope, faStar, faChalkboardUser } from "@fortawesome/free-solid-svg-icons"
+import { faXmark, faUser, faEnvelope, faStar, faChalkboardUser, faClock } from "@fortawesome/free-solid-svg-icons"
 
 // Firestore
 import { doc, getDoc } from "firebase/firestore"
@@ -89,20 +93,30 @@ const Account = () => {
         <div id="page" className="signoutPage">
             <div className="signoutMain">
                 <div className="accountInfoDiv">
-                    <h1 className="accountInfoTitle">Account info</h1>
-                    <div className="accountInfoInnerDiv">
-                        <h1 className="accountInfoText"><FontAwesomeIcon icon={faUser}/>&nbsp; {getUserData(user) ? userData.username : "Unnamed"}</h1>
-                        <h1 className="accountInfoText"><FontAwesomeIcon icon={faEnvelope}/>&nbsp; {user.email}</h1>
+                    <div className="accountInfoPartDiv">
+                        <h1 className="accountInfoTitle">Informations</h1>
+                        <div className="accountInfoInnerDiv">
+                            <h1 className="accountInfoText"><FontAwesomeIcon icon={faUser}/>&nbsp; {getUserData(user) ? userData.username : "Unnamed"}</h1>
+                            <h1 className="accountInfoText"><FontAwesomeIcon icon={faEnvelope}/>&nbsp; {user.email}</h1>
+                        </div>
                     </div>
-                    <div className="accountInfoInnerDiv">
-                        <h1 className="accountInfoText"><FontAwesomeIcon icon={faStar}/>&nbsp; {userData.subscription ? `Membre ${userData.subscription.charAt(0).toUpperCase() + userData.subscription.slice(1)}` : "No subscription"}</h1>
-                        <h1 className="accountInfoText"><FontAwesomeIcon icon={faChalkboardUser}/>&nbsp; {userData.classes.map((userClass) => {return `${userClass} `})}</h1>
+                    <div className="accountInfoPartDiv">
+                        <h1 className="accountInfoTitle">Abonnement</h1>
+                        <div className="accountInfoInnerDiv">
+                            <h1 className="accountInfoText"><FontAwesomeIcon icon={faStar}/>&nbsp; {(userData.subscription === "none") ? "Pas d'abonnements" :  `Membre ${userData.subscription.charAt(0).toUpperCase() + userData.subscription.slice(1)}`}</h1>
+                            <h1 className="accountInfoText"><FontAwesomeIcon icon={faClock}/>&nbsp; Membre depuis le ...</h1>
+                            <h1 className="accountInfoText"><FontAwesomeIcon icon={faChalkboardUser}/>&nbsp; {userData.classes.map((userClass) => {return `${userClass} `})}</h1>
+                        </div>
+                        <div className="accountInfoInnerDiv">
+                            <WhiteButton text="Changer d'abonnement"/>
+                        </div>
                     </div>
                 </div>
+                
                 <div className="accountNavigationDiv">
                     <h1 className="signoutTitle">Vous êtes connecté.</h1>
-                    <button onClick={() => {openAlertBox('Êtes-vous sûr de vouloir vous déconnecter?', undefined, 'page', 'Oui', handleLogout)}} className="signoutButton">SE DECONNECTER</button>
-                    <button onClick={() => {navigate("/")}} className="signoutButton">PAGE D'ACCUEIL</button>
+                    <GradientButton text="Se deconnecter" function={() => {openAlertBox('Êtes-vous sûr de vouloir vous déconnecter?', undefined, 'page', 'Oui', handleLogout)}}/>
+                    <GradientButton text="Page d'accueil" function={() => {navigate("/")}}/>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 .planCard {
-    background-color: #5541e9;
+    background: var(--main-background);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,42 +20,45 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
     border-radius: 25px;
     width: 13vw;
     height: 100%;
     padding: 0 1vw;
     margin-bottom: 1vh;
+}
+
+.default .planCardInnerContent {
+    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.planCardInnerContent .priceDiv {
+.special .planCardInnerContent {
+    background: none;
+}
+
+.default .priceDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: none;
     border-radius: 50px;
-    border: 2px solid #5541e9;
+    border: 2px solid var(--purple);
     margin-top: 1vh;
     width: 10vw;
     height: 4vw;
 }
 
-.planCardInnerContent .priceDiv .priceText {
-    color: #5541e9;
+.priceText {
     letter-spacing: 1px;
 }
 
-.important {
-    border: 10px solid #1AFF79;
-    animation: ColorChange 2s ease infinite;
+.default .priceText {
+    color: var(--purple);
 }
 
-@keyframes ColorChange {
-    0% {border: 10px solid #1AFF79;}
-    50% {border: 10px solid #22DDFE;};
-    100% {border: 10px solid #FE56F9;};
+.special .priceText {
+    color: #fff;
 }
 
 .planFeaturesList {
@@ -65,31 +68,61 @@
 }
 
 .planCardText {
-    color: #5541e9;
     font-size: 1rem;
 }
 
+.default .planCardText {
+    color: var(--purple);
+}
+
 .planFeature {
-    color: #5541e9;
     font-size: 1.2rem;
 }
 
-.planFeatureIcon {
-    color: #FE56F9;
+.default .planFeature {
+    color: var(--purple);
+}
+
+.special .planFeature {
+    color: #fff;
+}
+
+.default .planFeatureIcon {
+    color: var(--pink);
+}
+
+.special .planFeatureIcon {
+    color: #fff;
 }
 
 .planSubscribeButton {
     margin-bottom: 1vh;
     padding: 1rem 1rem;
-    background: linear-gradient( 90deg, #5541e9, #FE56F9 );
-    color: #fff;
     border-radius: 25px;
-    border: none;
     font-size: 1.25rem;
     transition-duration: .2s;
 }
 
-.planSubscribeButton:hover {
+.default .planSubscribeButton {
+    background: linear-gradient( 90deg, var(--purple), var(--pink) );
+    color: #fff;
+    border: none;
+}
+
+.default .planSubscribeButton:hover {
     cursor: pointer;
-    padding: 1rem 2rem;
+    transform: scale(1.2);
+}
+
+.special .planSubscribeButton {
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.special .planSubscribeButton:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    background: #fff;
+    color: var(--purple);
 }

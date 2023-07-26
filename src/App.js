@@ -11,6 +11,7 @@ import Home from './pages/Home.js'
 import Plans from './pages/Plans.js'
 // Content pages
 import Videos from './pages/Videos.js'
+import Exercices from './pages/Exercices.js'
 // Auth pages
 import Authentication from './pages/Authentication.js'
 import Signout from './pages/Account.js'
@@ -37,6 +38,7 @@ function App() {
             <Route path="/abonnements" element={user ?<Plans/> : <Authentication/>}></Route>
             <Route path="/signout" element={user ? <Signout/> : <Authentication/>}></Route>
             <Route path="/videos" element={user ? <Videos/> : <Authentication/>}></Route>
+            <Route path="/exercices" element={user ? <Exercices/> : <Authentication/>}></Route>
           </Routes>
           
         </BrowserRouter>
